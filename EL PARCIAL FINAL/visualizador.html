@@ -1,0 +1,275 @@
+<!-- 
+nicolle galvis
+sebastian Martinez -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Parcial Final</title>
+    <link rel="icon" type="image/x-icon" 
+        href="https://cdn3d.iconscout.com/3d/premium/thumb/game-controller-4790165-3988746.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles_visualizador.css" rel="stylesheet" />
+
+
+
+
+    <!-- three js archivos -->
+
+    <script src="./vendors/three.js-master/build/three.min.js"></script>
+    <script src="./vendors/controls/OrbitControls.js"></script>
+
+    <script src="./vendors/load/DRACOLoader.js"></script>
+    <script src="./vendors/load/GLTFLoader.js"></script>
+    <script src="./vendors/load/MTLLoader.js"></script>
+    <script src="./vendors/load/OBJLoader.js"></script>
+
+    <script src="./src/selectModel.js"></script>
+
+
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="pantalla_inicio.html">
+            <!-- <span class="d-block d-lg-none">Clarence Taylor</span> -->
+            <!-- <span class="d-none d-lg-block"><img class="img-fluid img-profile " src="./img/visor logo.jpg" alt="..." /></span> -->
+            <span class="d-none d-lg-block"><img class="img-fluid " src="./img/visor logo.jpeg" alt="..." /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item "><a class="nav-link fs-5 " href="" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#cargarModelo">Escoger modelo 3D</a></li>
+                <li class="nav-item "><a class="nav-link fs-5 " href="" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Cargar
+                        nuevo modelo</a></li>
+                <li class="nav-item "><a class="nav-link fs-5" href="" data-bs-toggle="modal"
+                        data-bs-target="#rotacion3dModal" class="dropdown-item">Rotar</a></li>
+                <li class="nav-item "><a class="nav-link fs-5" href="" data-bs-toggle="modal"
+                        data-bs-target="#escala3DModal" class="dropdown-item">Escalar</a></li>
+                <li class="nav-item "><a class="nav-link fs-5" href="" data-bs-toggle="modal"
+                        data-bs-target="#Traslada3DModal" class="dropdown-item">Trasladar</a></li>
+                <li class="nav-item "><a class="nav-link fs-5" href="" onclick="alert('proximamente')">contar poligonos</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarModelo">
+        Launch demo modal
+    </button> -->
+
+    <!-- Modal modelo 3D-->
+    <div class="modal fade " id="cargarModelo" tabindex="-1" aria-labelledby="cargarModeloLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title " id="cargarModeloLabel">selector de modelos 3D</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-cargaobjetos">
+
+                    <button class="glow-on-hover" type="button" onclick="Elegir_Personaje('leñador')">Leñador</button>
+                    <button class="glow-on-hover" type="button" onclick="Elegir_Personaje('reno')">Reno</button>
+                    <button class="glow-on-hover" type="button" onclick="Elegir_Personaje('isla')">Isla</button>
+                    <button class="glow-on-hover" type="button" onclick="Elegir_Personaje('luigi')">Luigi</button>
+                    <button class="glow-on-hover" type="button" onclick="Elegir_Personaje('pato')">Pato</button>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" class="btn-close" data-bs-dismiss="modal">Save
+                        changes</button> </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal seleccion de archivo-->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title " id="exampleModalLabel">selector de archivos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <input id="myfiles" type="file" accept=".mtl, .obj" multiple />
+                    <pre class="output">Selected files:</pre>
+
+                    <script>
+                        archivos_modelo();
+                    </script>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="cargarmodelo()" >Cargar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Rotar-->
+
+    <div class="modal fade" id="rotacion3dModal" tabindex="-1" aria-labelledby="rotacion3dModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rotacion3dModalLabel">Transformaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center">
+
+                        <div class="row">
+                            <label class="form-label">Rotacion</label>
+                            <div class="col">
+                                <input class="form-control" type="number" id="rotax" placeholder="x">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="rotay" placeholder="y">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="rotaz" placeholder="z">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="Rotar_objeto()">Rotar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal escala-->
+
+    <div class="modal fade" id="escala3DModal" tabindex="-1" aria-labelledby="escala3DModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="escala3DModalLabel">Transformaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center">
+
+                        <div class="row">
+                            <label class="form-label">Escalar</label>
+                            <div class="col">
+                                <input class="form-control" type="number" id="escalx" placeholder="x">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="escaly" placeholder="y">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="escalz" placeholder="z">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="Escalar_objeto()">Rotar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal trasladar-->
+
+    <div class="modal fade" id="Traslada3DModal" tabindex="-1" aria-labelledby="Traslada3DModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Traslada3DModalLabel">Transformaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center">
+
+                        <div class="row">
+                            <label class="form-label">Trasladar</label>
+                            <div class="col">
+                                <input class="form-control" type="number" id="traslax" placeholder="x">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="traslay" placeholder="y">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="traslaz" placeholder="z">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="trasladar_objeto()">Rotar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content-->
+    <div class="contenedor_3D" style="display:flex ;">
+        <canvas id="screen3D_model"></canvas>
+
+        <script>
+            mySelecyPlayer();
+        </script>
+
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <audio id="myAudio">
+        <source src="./songs/backgroundSound.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        document.getElementById("myAudio").volume = 0.4;
+        document.getElementById("myAudio").play();
+    </script>
+
+</body>
+
+</html>

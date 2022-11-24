@@ -1,0 +1,71 @@
+<!-- 
+nicolle galvis
+sebastian Martinez -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parcial final</title>
+    <link rel="icon" href="https://cdn3d.iconscout.com/3d/premium/thumb/game-controller-4790165-3988746.png">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Boockstrap-->
+    <link rel="stylesheet" href="./css/myMenuStyle.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Add all for GUI -->
+    <script src="./src/libs/jquery-1.11.1.js"></script>
+    <script src="./src/libs/three.js"></script>
+    <script src="./src/libs/DAT.GUI.min.js"></script>
+    <script src="./src/libs/Stats.js"></script>
+    <!-- ////////////////-->
+    <script src="./vendors/three.js-master/build/three.min.js"></script>
+    <script src="./vendors/controls/OrbitControls.js"></script>
+    <script src="./vendors/load/DRACOLoader.js"></script>
+    <script src="./vendors/load/GLTFLoader.js"></script>
+
+    <script src="./vendors/load/OBJLoader.js"></script>
+    <script src="./vendors/load/MTLLoader.js"></script>
+    <script src="./vendors/controls/FirstPersonControls.js"></script> <!-- movimiento wasd -->
+    <script src="./vendors/controls/PointerLockControls.js"></script>
+
+    <script src="./src/mov/FPSControls.js"></script>
+    <script src="./src/mov/pointerlock.js"></script>
+    <script src="./src/Sound.js"></script>
+
+    <script src="./src/main.js"></script>
+</head>
+
+<body>
+
+    <div class="contenedor-imagenes">
+        <div id="logojuego" class="img" 
+        style="background-image: url('./img/visor logo.jpeg'); display: flex">
+        
+    </div>
+    </div>
+
+    <div class="contenedor-boton">
+        <button class="button" onclick="redirect()">Load 3D model<br />(OBJ/MTL/GLTF)</button>
+        <script type="text/javascript">
+            function redirect()
+            {
+           
+            window.location.href="./visualizador.html";
+            }
+            </script>
+    </div>
+
+
+</body>
+
+</html>

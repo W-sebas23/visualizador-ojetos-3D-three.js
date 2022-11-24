@@ -1,0 +1,74 @@
+/* estilo del menu de inicio */
+
+@import 'https://fonts.googleapis.com/css?family=Rubik+One';
+
+body {
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    background-color: #c7c7c7;
+    background-image: url(http://www.transparenttextures.com/patterns/cartographer.png);
+    
+}
+
+.contenedor-imagenes, .contenedor-boton {
+
+    /* width: 70%; */
+    margin: 1.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.img {
+
+    height: 400px;
+    width: 400px;
+
+    border-radius: 10px;
+
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    /* overflow: hidden; */
+    background-size: cover;
+    background-position: center center; 
+    transition: all 1s; 
+
+
+}
+
+/* ///////////////// */
+
+
+.button {
+    
+
+    display: inline-block;
+    height: 225px;
+    width: 600px;
+    /* padding: 15px 15px; */
+    font-size: 60px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; 
+    outline: none;
+    color: #fff;
+    background-color: #29802c;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+
+}
+
+.button:hover {
+    background-color: #3e8e41
+}
+
+.button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+
+}
